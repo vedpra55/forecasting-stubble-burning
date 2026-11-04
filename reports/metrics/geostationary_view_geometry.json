@@ -1,0 +1,101 @@
+{
+  "name": "geostationary_view_geometry",
+  "created_utc": "2026-11-04T18:58:18+00:00",
+  "git_sha": "392d56c-dirty",
+  "script": "geostationary_geometry.py",
+  "params": {},
+  "target": {
+    "name": "Punjab centroid (approx)",
+    "lat": 30.8,
+    "lon": 75.4
+  },
+  "satellites": {
+    "insat_3dr": {
+      "label": "INSAT-3DR Imager",
+      "sub_lon": 74.0,
+      "ir_nadir_km": 4.0,
+      "repeat_min": 30,
+      "great_circle_deg": 30.8,
+      "vza_deg": 35.9,
+      "slant_km": 36832,
+      "visible": true,
+      "ir_pixel_tangential_km": 4.1,
+      "ir_pixel_radial_km": 5.1,
+      "ir_pixel_area_km2": 20.9
+    },
+    "insat_3ds": {
+      "label": "INSAT-3DS Imager",
+      "sub_lon": 82.0,
+      "ir_nadir_km": 4.0,
+      "repeat_min": 30,
+      "great_circle_deg": 31.4,
+      "vza_deg": 36.6,
+      "slant_km": 36872,
+      "visible": true,
+      "ir_pixel_tangential_km": 4.1,
+      "ir_pixel_radial_km": 5.1,
+      "ir_pixel_area_km2": 21.2
+    },
+    "meteosat_9": {
+      "label": "Meteosat-9 SEVIRI (IODC, since 2022-06)",
+      "sub_lon": 45.5,
+      "ir_nadir_km": 3.0,
+      "repeat_min": 15,
+      "great_circle_deg": 41.9,
+      "vza_deg": 48.4,
+      "slant_km": 37656,
+      "visible": true,
+      "ir_pixel_tangential_km": 3.2,
+      "ir_pixel_radial_km": 4.8,
+      "ir_pixel_area_km2": 15.0
+    },
+    "meteosat_8": {
+      "label": "Meteosat-8 SEVIRI (IODC, until 2022-06)",
+      "sub_lon": 41.5,
+      "ir_nadir_km": 3.0,
+      "repeat_min": 15,
+      "great_circle_deg": 44.5,
+      "vza_deg": 51.3,
+      "slant_km": 37882,
+      "visible": true,
+      "ir_pixel_tangential_km": 3.2,
+      "ir_pixel_radial_km": 5.1,
+      "ir_pixel_area_km2": 16.1
+    },
+    "gk2a": {
+      "label": "GK2A AMI",
+      "sub_lon": 128.2,
+      "ir_nadir_km": 2.0,
+      "repeat_min": 10,
+      "great_circle_deg": 58.7,
+      "vza_deg": 66.7,
+      "slant_km": 39232,
+      "visible": true,
+      "ir_pixel_tangential_km": 2.2,
+      "ir_pixel_radial_km": 5.5,
+      "ir_pixel_area_km2": 12.2
+    },
+    "himawari_9": {
+      "label": "Himawari-9 AHI",
+      "sub_lon": 140.7,
+      "ir_nadir_km": 2.0,
+      "repeat_min": 10,
+      "great_circle_deg": 69.0,
+      "vza_deg": 77.5,
+      "slant_km": 40317,
+      "visible": true,
+      "ir_pixel_tangential_km": 2.3,
+      "ir_pixel_radial_km": 10.4,
+      "ir_pixel_area_km2": 23.5
+    }
+  },
+  "ranked_by_pixel_area": [
+    "gk2a",
+    "meteosat_9",
+    "meteosat_8",
+    "insat_3dr",
+    "insat_3ds",
+    "himawari_9"
+  ],
+  "note": "first-order geometry; see script docstring"
+}

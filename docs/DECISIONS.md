@@ -35,7 +35,7 @@ Numbers cited here come from `reports/metrics/` (file named in brackets).
 - Constant-sensor labels keep train and test comparable.
 - The cost is fewer positives. That's acceptable because Phase 2 adds burn-scar labels, which do not depend on overpass timing.
 
-**Outcome:** _pending owner decision_
+**Outcome (owner, 2026-11-04): approved. NOAA-20 only for active-fire labels.** Recorded in `configs/task.yaml` (`label_sensor`). S-NPP and NOAA-21 may still be used for sensitivity analysis and for estimating label recall in Phase 2, never as the primary label.
 
 ---
 
@@ -44,7 +44,11 @@ Numbers cited here come from `reports/metrics/` (file named in brackets).
 Pilot districts, cell size, forecast horizon, issue frequency.
 Each has a recommendation and trade-offs in the phase report.
 
-**Outcome:** _pending owner decision_
+**Outcome (owner, 2026-11-04): approved as recommended.**
+- **Pilot districts:** Sangrur and Tarn Taran for train/validation; Bathinda as the spatial holdout, never used in training (`configs/region.yaml`).
+- **Cell size:** 500 m (`configs/grid.yaml`). Revisit only if the measured GEE cost difference between cell sizes says so; the cost pilot is still pending (see the phase report §4).
+- **Horizon:** 7 days, with 3 days as a secondary result (`configs/task.yaml`).
+- **Issue dates:** daily for validation and test; every 3rd season day for training (`configs/task.yaml`).
 
 ---
 
@@ -79,4 +83,56 @@ Each has a recommendation and trade-offs in the phase report.
   2. measure active-fire vs scar agreement *per season*;
   3. consider a geostationary fire product as an extra label source.
 
-**Outcome:** _for discussion at the Phase 1 gate_
+**Outcome (owner, 2026-11-04): approved.** Add a geostationary fire product in Phase 2, scoped to measuring polar-orbiter miss rates per season. It is a measurement of label quality, not a label for individual 500 m cells: geostationary pixels are 12–24 km² over Punjab. Which satellite to use is D-005.
+
+---
+
+## D-005: Which geostationary fire product for measuring polar-orbiter miss rates? (open)
+
+**Context.**
+- D-004 needs an instrument that observes Punjab through the afternoon, so we can measure, per season, what share of fire activity happens outside the ~13:00–14:45 IST VIIRS window.
+- View geometry over Punjab (30.8°N, 75.4°E), from first-order geometry in `reports/metrics/geostationary_view_geometry.json`:
+
+| Satellite (sub-satellite lon) | View zenith angle | ~3.9 µm pixel at Punjab | Repeat |
+|---|---|---|---|
+| INSAT-3DR Imager (74.0°E) | 35.9° | 4.1 × 5.1 km (20.9 km²) | 30 min |
+| INSAT-3DS Imager (82.0°E) | 36.6° | 4.1 × 5.1 km (21.2 km²) | 30 min |
+| Meteosat-9 SEVIRI, IODC (45.5°E, since Jun 2022) | 48.4° | 3.2 × 4.8 km (15.0 km²) | 15 min |
+| Meteosat-8 SEVIRI, IODC (41.5°E, until Jun 2022) | 51.3° | 3.2 × 5.1 km (16.1 km²) | 15 min |
+| GK2A AMI (128.2°E) | 66.7° | 2.2 × 5.5 km (12.2 km²) | 10 min |
+| Himawari-9 AHI (140.7°E) | 77.5° | 2.3 × 10.4 km (23.5 km²) | 10 min |
+
+- **Best *view*:** the INSAT satellites, which see Punjab most directly (lowest view angle: shortest path through haze and smoke, least parallax). GK2A has the smallest pixel area, but sees Punjab at a steep 67° angle: about 2.5× the vertical atmospheric path (1/cos 66.7°) and a strongly stretched footprint.
+- **What matters as much as the view is whether a fire product and an archive exist for 2019–2026.** Checked 2026-11-04:
+  - **Meteosat IODC (SEVIRI).**
+    - LSA SAF publishes an FRP-PIXEL fire list for the full IODC disk (file names `..._IODC-Disk_YYYYMMDDhhmm`). It is listed every 15 min for 2017 through 2026; I confirmed a complete day of file names for 1 Nov 2019 and 1 Nov 2023.
+    - The algorithm is published and validated against MODIS elsewhere (Wooster et al. 2015, ACP).
+    - It is the instrument the ISRO study used for exactly this question.
+    - Status is "demonstration", best effort. Access needs free LSA SAF registration, and file *contents* over Punjab are not yet checked.
+  - **INSAT-3DR / 3DS.**
+    - MOSDAC lists an operational active-fire product for INSAT-3DS (`3SIMG_L2P_FIR`, KML points) and describes one for INSAT-3DR.
+    - I found no published validation for crop-residue fires.
+    - Archive access for 2019–2024 through MOSDAC is unverified.
+    - The record changes satellite (3DR → 3DS from 2024) at a different position.
+  - **GK2A.**
+    - Open L1B on AWS (`noaa-gk2a-pds`) starts only in **Feb 2023**, so it misses 2019–2022.
+    - No ready-made fire product was found; we would need to write our own detection algorithm. Jethva (2026) did this with NMSC-sourced data for 2019–2025.
+  - **Himawari.** The JAXA wildfire product covers only 80°E–160°W (README), which excludes Punjab (74–77°E), and the view angle is 77.5°. Rejected.
+
+**Options.** (1) Meteosat IODC SEVIRI FRP-PIXEL; (2) INSAT-3DR/3DS MOSDAC fire product; (3) GK2A with our own algorithm.
+
+**Recommendation: option 1, Meteosat IODC SEVIRI FRP-PIXEL (LSA SAF)**, conditional on a one-file check that it contains Punjab detections. Keep INSAT-3DR as a cross-check if the MOSDAC archive turns out to be accessible.
+
+**Why.**
+- It is the only candidate with all three of: a published, validated fire algorithm; one consistent 15-minute product covering every season 2019–2026; and an archive we can confirm exists.
+- INSAT's better view does not outweigh an unvalidated product, a satellite change mid-record and an unverified archive.
+- GK2A's open archive misses half the seasons.
+
+**Known confound to handle in Phase 2.**
+- The IODC satellite switched from Meteosat-8 to Meteosat-9 in June 2022, between the 2021 and 2022 seasons. That is exactly when the reported diurnal shift begins.
+- Meteosat-9 sees Punjab slightly better (48.4° vs 51.3° view angle), so a jump in SEVIRI detections in 2022 could be partly instrumental.
+- **Check:** compare, per season, SEVIRI detections within ±30 min of the VIIRS overpass against VIIRS detections. If that ratio is stable across 2021→2022, the switch is not driving the trend.
+
+**Owner action needed:** register at https://mokey.lsasvcs.ipma.pt/auth/signup (free) and provide the credentials as environment secrets `LSASAF_USER` / `LSASAF_PASSWORD`.
+
+**Outcome:** _pending owner decision_

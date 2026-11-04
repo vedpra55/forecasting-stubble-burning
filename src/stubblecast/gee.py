@@ -31,21 +31,21 @@ def initialize() -> str:
     from google.oauth2 import service_account
 
     load_dotenv(REPO_ROOT / ".env")
-    project = os.environ.get("GEE_PROJECT")
-    if not project:
-        raise GEEUnavailable("GEE_PROJECT is not set")
-
     key_json = os.environ.get("GEE_SERVICE_ACCOUNT_KEY")
     key_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
     if key_json:
-        creds = service_account.Credentials.from_service_account_info(
-            json.loads(key_json), scopes=SCOPES
-        )
+        info = json.loads(key_json)
     elif key_path and os.path.exists(key_path):
-        creds = service_account.Credentials.from_service_account_file(key_path, scopes=SCOPES)
+        with open(key_path) as f:
+            info = json.load(f)
     else:
         raise GEEUnavailable("No service-account key (GEE_SERVICE_ACCOUNT_KEY / "
                              "GOOGLE_APPLICATION_CREDENTIALS)")
+    creds = service_account.Credentials.from_service_account_info(info, scopes=SCOPES)
+    # Project: explicit GEE_PROJECT wins; otherwise the key's own project.
+    project = os.environ.get("GEE_PROJECT") or info.get("project_id")
+    if not project:
+        raise GEEUnavailable("GEE_PROJECT is not set and the key has no project_id")
     try:
         ee.Initialize(credentials=creds, project=project)
         ee.Number(1).getInfo()  # force a round trip so failures surface here

@@ -1,0 +1,8 @@
+# Prediction-task parameters. Decided at the Phase 1 gate (D-002, 2026-11-04).
+horizon_days: 7              # target: fire in (t, t+7]
+secondary_horizon_days: 3    # reported as a secondary result only
+issue_every_days:
+  train: 3                   # every 3rd season day (fewer near-duplicate rows)
+  validate: 1                # daily, as a deployed system would issue
+  test: 1
+label_sensor: viirs_noaa20   # D-001: active-fire labels from NOAA-20 only

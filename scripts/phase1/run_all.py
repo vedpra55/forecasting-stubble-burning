@@ -12,7 +12,7 @@ from pathlib import Path
 HERE = Path(__file__).parent
 STEPS = ["download_firms.py", "verify_firms.py", "verify_openaq.py", "verify_boundaries.py",
          "verify_s2.py", "verify_s1.py", "verify_worldcover.py", "verify_era5.py",
-         "firms_eda.py"]
+         "firms_eda.py", "geostationary_geometry.py"]
 
 
 def main() -> None:

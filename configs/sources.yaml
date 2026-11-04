@@ -23,3 +23,15 @@ firms:
 openaq:
   base_url: https://api.openaq.org/v3
   auth_header: X-API-Key
+# Geostationary imagers considered for measuring polar-orbiter fire miss rates (D-004).
+# sub_lon: sub-satellite longitude (deg E). ir_nadir_km: nadir sampling of the ~3.9 um band.
+# repeat_min: full-disk (or India-sector) repeat cycle. Values from operator pages (2026-11).
+geostationary:
+  target_point: {name: Punjab centroid (approx), lat: 30.8, lon: 75.4}
+  satellites:
+    insat_3dr:   {label: INSAT-3DR Imager,  sub_lon: 74.0,  ir_nadir_km: 4.0, repeat_min: 30}
+    insat_3ds:   {label: INSAT-3DS Imager,  sub_lon: 82.0,  ir_nadir_km: 4.0, repeat_min: 30}
+    meteosat_9:  {label: "Meteosat-9 SEVIRI (IODC, since 2022-06)", sub_lon: 45.5, ir_nadir_km: 3.0, repeat_min: 15}
+    meteosat_8:  {label: "Meteosat-8 SEVIRI (IODC, until 2022-06)", sub_lon: 41.5, ir_nadir_km: 3.0, repeat_min: 15}
+    gk2a:        {label: GK2A AMI,          sub_lon: 128.2, ir_nadir_km: 2.0, repeat_min: 10}
+    himawari_9:  {label: Himawari-9 AHI,    sub_lon: 140.7, ir_nadir_km: 2.0, repeat_min: 10}

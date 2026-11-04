@@ -12,7 +12,9 @@ boundaries:
   gee_collection: FAO/GAUL/2025/level2
   # Fallback when GEE is unavailable: geoBoundaries ADM2 for India (CC BY 4.0).
   geoboundaries_api: https://www.geoboundaries.org/api/current/gbOpen/IND/ADM2/
-pilot_districts: []          # set at the Phase 1 gate
+# Decided at the Phase 1 gate (D-002, 2026-11-04)
+pilot_districts: [Sangrur, Tarn Taran]   # train / validate
+holdout_districts: [Bathinda]            # spatial holdout: never used in training
 cost_pilot_district: Sangrur # district used for the GEE cost measurement
 # Candidates evaluated in Phase 1 (cropland cell counts in verify_worldcover.py)
 candidate_pilot_districts: [Sangrur, Tarn Taran, Bathinda]

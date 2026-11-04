@@ -1,6 +1,6 @@
 # Phase 1 report: Scoping and data audit
 
-**Status: partially complete. Stopped at the review gate.**
+**Status: partially complete. Stopped at the review gate.** Gate decisions D-001, D-002 and D-004 were made on 2026-11-04 (§7). The GEE cost is still unmeasured (§4).
 
 - **Done:**
   - repo skeleton
@@ -132,7 +132,14 @@ Source: `reports/metrics/firms_eda.json`. Figures are in `reports/figures/firms_
 
 ## 4. GEE cost: **not measured**
 
-`gee_cost_pilot.py` is written and lint-clean but has not run, because the project is not registered. What it will measure:
+> **Update 2026-11-04 (second gate pass).**
+> - The project is now registered and the key has been rotated.
+> - But this session started before `GEE_SERVICE_ACCOUNT_KEY` was added to the environment, and environment settings only reach new sessions.
+> - The old key on disk is now rejected (`invalid_grant: Invalid JWT Signature`), which confirms the rotation; that file has been deleted.
+> - So `run_all.py` could not reach Earth Engine here, and **the cost is still unmeasured**.
+> - Next step: in a new session, run `uv run python scripts/phase1/run_all.py`.
+
+`gee_cost_pilot.py` is written and lint-clean but has not run. What it will measure:
 
 - **District and season:** Sangrur, 2023 (a train season), window 27 Jul – 5 Dec.
 - **Grids:** 300, 500 and 1000 m cropland grids, cells with at least 50% WorldCover class 40.
@@ -184,6 +191,7 @@ I deliberately give **no estimate** here. The only figure I could give would be 
   - But a 100 ha cell is too coarse to direct a visit, and the task becomes close to "will this village burn", which is easy and less useful.
 - **300 m:** matches Sentinel-2 better, but the active-fire label noise is worse: at 375 m (the closest measured size), only 2.2–4.4% agreement.
 - **Cost:** the S2 October scaling runs will show the cost difference between sizes. I expect cost to track area more than cell count, but that is unmeasured.
+- **Owner decision (D-002, 2026-11-04):** 500 m approved. Revisit only if the measured cost difference says so. **Still pending:** the measurement has not run (§4).
 
 **6.3 Forecast horizon. Recommend 7 days (keep 3 days as a secondary report).**
 - **Positives:** 7 days gives 2.3–2.5× more positives per issue date than 3 days (e.g. 2024: 1,031 vs 421 mean at 500 m). That makes recall@k at k = 200–1000 much less noisy, especially in the low-count 2024 validation season.
@@ -206,11 +214,15 @@ I deliberately give **no estimate** here. The only figure I could give would be 
 
 ## 7. Problems and open questions for the owner
 
-1. **Register the GEE project** at https://console.cloud.google.com/earth-engine/configuration?project=stubblecast (noncommercial, Community tier).
-   - Check that `stubblecast-runner@stubblecast.iam.gserviceaccount.com` has the *Earth Engine Resource Writer* role.
-   - Then I run `run_all.py` and update §4 and §6.2 with measured numbers.
-2. **Rotate the service-account key** after this session. It was pasted into the chat, so it is in the transcript. In future, set it as an environment secret (`GEE_SERVICE_ACCOUNT_KEY`).
+1. ~~Register the GEE project~~ done. ~~Rotate the key~~ done.
+   - **Remaining:** start a new session so `GEE_SERVICE_ACCOUNT_KEY` is loaded, then run `run_all.py` and update §4 and §6.2.
+   - `GEE_PROJECT` is now optional; the code falls back to the key's `project_id`.
 3. **Get a FIRMS MAP_KEY before Phase 6.** No yearly file exists for 2026, and none for NOAA-21 at all.
-4. **Decide D-001** (label sensor), **D-002** (§6), and look at **D-004** (late-afternoon burning).
-   - D-004 is the biggest scientific risk found so far: the fall in detections from 2022 on may be partly fewer *detections* rather than less burning, and the validation and test seasons fall in that period.
-5. **Optional:** add a geostationary fire product (GK2A or Himawari) as a third label source in Phase 2. It would directly measure what polar orbiters miss, at about 2–4 km resolution.
+4. **Decided 2026-11-04:** D-001 (NOAA-20 only), D-002 (as recommended), D-004 (geostationary miss-rate measurement in Phase 2). Recorded in `docs/DECISIONS.md`, `configs/task.yaml` and `configs/region.yaml`.
+5. **D-005 (open): geostationary product.**
+   - Recommendation: Meteosat IODC SEVIRI FRP-PIXEL (LSA SAF).
+   - INSAT-3DR has the best view of Punjab (view angle 35.9°, vs 48.4° for Meteosat-9), but its fire product is unvalidated for crop fires and its 2019–2024 archive is unverified.
+   - GK2A's open archive starts only in Feb 2023.
+   - Himawari's fire product excludes Punjab.
+   - Geometry is in `reports/metrics/geostationary_view_geometry.json`.
+   - Needs a free LSA SAF account (`LSASAF_USER` / `LSASAF_PASSWORD`).
