@@ -1,0 +1,1122 @@
+{
+  "name": "firms_eda",
+  "created_utc": "2026-11-04T18:22:45+00:00",
+  "git_sha": null,
+  "script": "firms_eda.py",
+  "params": {
+    "seasons": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "primary_sensor": "viirs_noaa20",
+    "season_window": [
+      "09-25",
+      "12-05"
+    ],
+    "boundaries": "geoBoundaries gbOpen IND ADM2 @ 9469f09",
+    "cell_binning": "local equirectangular, lat0=31"
+  },
+  "punjab_area_km2_geodesic": 50511.2,
+  "n_punjab_districts": 22,
+  "sensors": {
+    "viirs_noaa20": {
+      "type_counts_in_season": {
+        "0": 293850,
+        "2": 70,
+        "3": 6
+      },
+      "season_totals_type0": {
+        "2019": 44808,
+        "2020": 77849,
+        "2021": 77412,
+        "2022": 49949,
+        "2023": 33448,
+        "2024": 10384
+      },
+      "share_of_calendar_year_in_season_type0": {
+        "2019": 0.6544,
+        "2020": 0.8105,
+        "2021": 0.8179,
+        "2022": 0.6985,
+        "2023": 0.6185,
+        "2024": 0.3221
+      },
+      "daynight_share_in_season": {
+        "D": 0.9984,
+        "N": 0.0016
+      },
+      "confidence_share_in_season": {
+        "nominal": 0.9154,
+        "low": 0.0449,
+        "high": 0.0396
+      },
+      "version_values": [
+        "2"
+      ]
+    },
+    "viirs_snpp": {
+      "type_counts_in_season": {
+        "0": 286887,
+        "2": 83,
+        "3": 1
+      },
+      "season_totals_type0": {
+        "2019": 45168,
+        "2020": 76197,
+        "2021": 78481,
+        "2022": 46623,
+        "2023": 31328,
+        "2024": 9090
+      },
+      "share_of_calendar_year_in_season_type0": {
+        "2019": 0.6587,
+        "2020": 0.8011,
+        "2021": 0.8253,
+        "2022": 0.6767,
+        "2023": 0.6,
+        "2024": 0.2867
+      },
+      "daynight_share_in_season": {
+        "D": 0.9984,
+        "N": 0.0016
+      },
+      "confidence_share_in_season": {
+        "nominal": 0.9115,
+        "low": 0.0463,
+        "high": 0.0422
+      },
+      "version_values": [
+        "2"
+      ]
+    },
+    "modis": {
+      "type_counts_in_season": {
+        "0": 68735,
+        "2": 740
+      },
+      "season_totals_type0": {
+        "2019": 10205,
+        "2020": 17126,
+        "2021": 18026,
+        "2022": 10883,
+        "2023": 8594,
+        "2024": 3901
+      },
+      "share_of_calendar_year_in_season_type0": {
+        "2019": 0.7178,
+        "2020": 0.885,
+        "2021": 0.8819,
+        "2022": 0.7332,
+        "2023": 0.8097,
+        "2024": 0.557
+      },
+      "daynight_share_in_season": {
+        "D": 0.9995,
+        "N": 0.0005
+      },
+      "confidence_pct_quantiles": {
+        "0.1": 39.0,
+        "0.5": 65.0,
+        "0.9": 82.0
+      },
+      "satellite_counts_in_season": {
+        "Aqua": 65709,
+        "Terra": 3766
+      }
+    }
+  },
+  "timing_noaa20": {
+    "2019": {
+      "total": 44808,
+      "peak_day": "2019-11-04",
+      "peak_day_count": 4026,
+      "peak_7day_mean_center": "2019-11-03",
+      "q10": "2019-10-23",
+      "q50": "2019-11-03",
+      "q90": "2019-11-10",
+      "days_q10_to_q90": 18,
+      "zero_fire_days": 5
+    },
+    "2020": {
+      "total": 77849,
+      "peak_day": "2020-11-05",
+      "peak_day_count": 5267,
+      "peak_7day_mean_center": "2020-11-07",
+      "q10": "2020-10-20",
+      "q50": "2020-11-03",
+      "q90": "2020-11-11",
+      "days_q10_to_q90": 22,
+      "zero_fire_days": 1
+    },
+    "2021": {
+      "total": 77412,
+      "peak_day": "2021-11-07",
+      "peak_day_count": 5815,
+      "peak_7day_mean_center": "2021-11-10",
+      "q10": "2021-10-28",
+      "q50": "2021-11-07",
+      "q90": "2021-11-14",
+      "days_q10_to_q90": 17,
+      "zero_fire_days": 3
+    },
+    "2022": {
+      "total": 49949,
+      "peak_day": "2022-11-05",
+      "peak_day_count": 4229,
+      "peak_7day_mean_center": "2022-11-02",
+      "q10": "2022-10-24",
+      "q50": "2022-11-04",
+      "q90": "2022-11-13",
+      "days_q10_to_q90": 20,
+      "zero_fire_days": 2
+    },
+    "2023": {
+      "total": 33448,
+      "peak_day": "2023-11-07",
+      "peak_day_count": 2189,
+      "peak_7day_mean_center": "2023-11-05",
+      "q10": "2023-10-27",
+      "q50": "2023-11-06",
+      "q90": "2023-11-17",
+      "days_q10_to_q90": 21,
+      "zero_fire_days": 4
+    },
+    "2024": {
+      "total": 10384,
+      "peak_day": "2024-11-18",
+      "peak_day_count": 889,
+      "peak_7day_mean_center": "2024-11-06",
+      "q10": "2024-10-21",
+      "q50": "2024-11-07",
+      "q90": "2024-11-20",
+      "days_q10_to_q90": 30,
+      "zero_fire_days": 1
+    },
+    "q50_day_of_season_range": [
+      39,
+      43
+    ],
+    "q50_shift_days_max_minus_min": 4
+  },
+  "districts_noaa20": {
+    "totals": {
+      "Sangrur": {
+        "2019": 5989,
+        "2020": 9999,
+        "2021": 8958,
+        "2022": 6196,
+        "2023": 5828,
+        "2024": 1861
+      },
+      "Bathinda": {
+        "2019": 4592,
+        "2020": 7521,
+        "2021": 7494,
+        "2022": 5023,
+        "2023": 2839,
+        "2024": 763
+      },
+      "Moga": {
+        "2019": 2720,
+        "2020": 6035,
+        "2021": 6002,
+        "2022": 3575,
+        "2023": 2261,
+        "2024": 671
+      },
+      "Patiala": {
+        "2019": 3235,
+        "2020": 5606,
+        "2021": 5435,
+        "2022": 3514,
+        "2023": 1975,
+        "2024": 587
+      },
+      "Firozpur": {
+        "2019": 3076,
+        "2020": 5169,
+        "2021": 4711,
+        "2022": 3194,
+        "2023": 2602,
+        "2024": 898
+      },
+      "Muktsar": {
+        "2019": 2891,
+        "2020": 5068,
+        "2021": 5902,
+        "2022": 3521,
+        "2023": 1436,
+        "2024": 804
+      },
+      "Mansa": {
+        "2019": 3297,
+        "2020": 5359,
+        "2021": 4903,
+        "2022": 3084,
+        "2023": 2177,
+        "2024": 620
+      },
+      "Fazilka": {
+        "2019": 2042,
+        "2020": 5246,
+        "2021": 5122,
+        "2022": 3527,
+        "2023": 1935,
+        "2024": 651
+      },
+      "Ludhiana": {
+        "2019": 2300,
+        "2020": 4582,
+        "2021": 5685,
+        "2022": 2884,
+        "2023": 1560,
+        "2024": 376
+      },
+      "Tarn Taran": {
+        "2019": 3027,
+        "2020": 4689,
+        "2021": 3743,
+        "2022": 3107,
+        "2023": 1704,
+        "2024": 735
+      },
+      "Barnala": {
+        "2019": 2629,
+        "2020": 4548,
+        "2021": 4070,
+        "2022": 2799,
+        "2023": 2367,
+        "2024": 228
+      },
+      "Faridkot": {
+        "2019": 1873,
+        "2020": 3412,
+        "2021": 3556,
+        "2022": 2267,
+        "2023": 1549,
+        "2024": 469
+      },
+      "Amritsar": {
+        "2019": 1249,
+        "2020": 2459,
+        "2021": 2273,
+        "2022": 1482,
+        "2023": 1405,
+        "2024": 528
+      },
+      "Jalandhar": {
+        "2019": 1452,
+        "2020": 1897,
+        "2021": 2708,
+        "2022": 1442,
+        "2023": 1019,
+        "2024": 155
+      },
+      "Kapurthala": {
+        "2019": 1234,
+        "2020": 1576,
+        "2021": 1851,
+        "2022": 1275,
+        "2023": 986,
+        "2024": 306
+      },
+      "Gurdaspur": {
+        "2019": 1485,
+        "2020": 2091,
+        "2021": 1466,
+        "2022": 874,
+        "2023": 401,
+        "2024": 247
+      },
+      "Fatehgarh Sahib": {
+        "2019": 781,
+        "2020": 1366,
+        "2021": 1798,
+        "2022": 1108,
+        "2023": 871,
+        "2024": 261
+      },
+      "Hoshiarpur": {
+        "2019": 307,
+        "2020": 513,
+        "2021": 408,
+        "2022": 308,
+        "2023": 118,
+        "2024": 55
+      },
+      "Shahid Bhagat Singh Nagar": {
+        "2019": 297,
+        "2020": 217,
+        "2021": 549,
+        "2022": 332,
+        "2023": 216,
+        "2024": 63
+      },
+      "Rupnagar": {
+        "2019": 146,
+        "2020": 246,
+        "2021": 449,
+        "2022": 275,
+        "2023": 71,
+        "2024": 27
+      },
+      "Sahibzada Ajit Singh Nagar": {
+        "2019": 173,
+        "2020": 228,
+        "2021": 317,
+        "2022": 159,
+        "2023": 125,
+        "2024": 63
+      },
+      "Pathankot": {
+        "2019": 13,
+        "2020": 22,
+        "2021": 12,
+        "2022": 3,
+        "2023": 3,
+        "2024": 16
+      }
+    },
+    "share_of_state_total": {
+      "Sangrur": 0.1321,
+      "Bathinda": 0.0961,
+      "Moga": 0.0724,
+      "Patiala": 0.0693,
+      "Firozpur": 0.0669,
+      "Muktsar": 0.0668,
+      "Mansa": 0.0662,
+      "Fazilka": 0.063,
+      "Ludhiana": 0.0592,
+      "Tarn Taran": 0.0579,
+      "Barnala": 0.0566,
+      "Faridkot": 0.0447,
+      "Amritsar": 0.032,
+      "Jalandhar": 0.0295,
+      "Kapurthala": 0.0246,
+      "Gurdaspur": 0.0223,
+      "Fatehgarh Sahib": 0.021,
+      "Hoshiarpur": 0.0058,
+      "Shahid Bhagat Singh Nagar": 0.0057,
+      "Rupnagar": 0.0041,
+      "Sahibzada Ajit Singh Nagar": 0.0036,
+      "Pathankot": 0.0002
+    },
+    "cv_across_seasons": {
+      "Sangrur": 0.44,
+      "Bathinda": 0.561,
+      "Moga": 0.603,
+      "Patiala": 0.575,
+      "Firozpur": 0.469,
+      "Muktsar": 0.609,
+      "Mansa": 0.54,
+      "Fazilka": 0.603,
+      "Ludhiana": 0.675,
+      "Tarn Taran": 0.501,
+      "Barnala": 0.547,
+      "Faridkot": 0.535,
+      "Amritsar": 0.452,
+      "Jalandhar": 0.591,
+      "Kapurthala": 0.442,
+      "Gurdaspur": 0.65,
+      "Fatehgarh Sahib": 0.511,
+      "Hoshiarpur": 0.606,
+      "Shahid Bhagat Singh Nagar": 0.579,
+      "Rupnagar": 0.763,
+      "Sahibzada Ajit Singh Nagar": 0.493,
+      "Pathankot": 0.648
+    },
+    "top5_share": 0.4367,
+    "q50_timing": {
+      "Amritsar": {
+        "median_q50_day_of_season": 29.0,
+        "seasons_used": 6
+      },
+      "Barnala": {
+        "median_q50_day_of_season": 42.0,
+        "seasons_used": 6
+      },
+      "Bathinda": {
+        "median_q50_day_of_season": 43.0,
+        "seasons_used": 6
+      },
+      "Faridkot": {
+        "median_q50_day_of_season": 43.0,
+        "seasons_used": 6
+      },
+      "Fatehgarh Sahib": {
+        "median_q50_day_of_season": 35.5,
+        "seasons_used": 6
+      },
+      "Fazilka": {
+        "median_q50_day_of_season": 46.5,
+        "seasons_used": 6
+      },
+      "Firozpur": {
+        "median_q50_day_of_season": 40.5,
+        "seasons_used": 6
+      },
+      "Gurdaspur": {
+        "median_q50_day_of_season": 33.5,
+        "seasons_used": 6
+      },
+      "Hoshiarpur": {
+        "median_q50_day_of_season": 36.5,
+        "seasons_used": 6
+      },
+      "Jalandhar": {
+        "median_q50_day_of_season": 39.0,
+        "seasons_used": 6
+      },
+      "Kapurthala": {
+        "median_q50_day_of_season": 35.0,
+        "seasons_used": 6
+      },
+      "Ludhiana": {
+        "median_q50_day_of_season": 42.0,
+        "seasons_used": 6
+      },
+      "Mansa": {
+        "median_q50_day_of_season": 41.5,
+        "seasons_used": 6
+      },
+      "Moga": {
+        "median_q50_day_of_season": 45.0,
+        "seasons_used": 6
+      },
+      "Muktsar": {
+        "median_q50_day_of_season": 45.0,
+        "seasons_used": 6
+      },
+      "Patiala": {
+        "median_q50_day_of_season": 36.0,
+        "seasons_used": 6
+      },
+      "Rupnagar": {
+        "median_q50_day_of_season": 35.0,
+        "seasons_used": 5
+      },
+      "Sahibzada Ajit Singh Nagar": {
+        "median_q50_day_of_season": 29.0,
+        "seasons_used": 6
+      },
+      "Sangrur": {
+        "median_q50_day_of_season": 41.0,
+        "seasons_used": 6
+      },
+      "Shahid Bhagat Singh Nagar": {
+        "median_q50_day_of_season": 39.5,
+        "seasons_used": 6
+      },
+      "Tarn Taran": {
+        "median_q50_day_of_season": 34.0,
+        "seasons_used": 6
+      }
+    },
+    "n_districts": 22
+  },
+  "viirs_sensor_agreement_500m": {
+    "2019": {
+      "n20_cell_days": 41594,
+      "snpp_cell_days": 41853,
+      "both_same_day": 2262,
+      "p_snpp_given_n20_same_day": 0.0544,
+      "p_n20_given_snpp_same_day": 0.054,
+      "p_snpp_given_n20_pm1day": 0.0983,
+      "p_n20_given_snpp_pm1day": 0.0977,
+      "season_cells_n20": 35829,
+      "season_cells_snpp": 36058,
+      "season_cells_jaccard": 0.1744
+    },
+    "2020": {
+      "n20_cell_days": 72187,
+      "snpp_cell_days": 69972,
+      "both_same_day": 4252,
+      "p_snpp_given_n20_same_day": 0.0589,
+      "p_n20_given_snpp_same_day": 0.0608,
+      "p_snpp_given_n20_pm1day": 0.1172,
+      "p_n20_given_snpp_pm1day": 0.1201,
+      "season_cells_n20": 55651,
+      "season_cells_snpp": 54488,
+      "season_cells_jaccard": 0.2737
+    },
+    "2021": {
+      "n20_cell_days": 71589,
+      "snpp_cell_days": 72204,
+      "both_same_day": 4846,
+      "p_snpp_given_n20_same_day": 0.0677,
+      "p_n20_given_snpp_same_day": 0.0671,
+      "p_snpp_given_n20_pm1day": 0.1285,
+      "p_n20_given_snpp_pm1day": 0.1271,
+      "season_cells_n20": 56384,
+      "season_cells_snpp": 56753,
+      "season_cells_jaccard": 0.2665
+    },
+    "2022": {
+      "n20_cell_days": 46742,
+      "snpp_cell_days": 43140,
+      "both_same_day": 2049,
+      "p_snpp_given_n20_same_day": 0.0438,
+      "p_n20_given_snpp_same_day": 0.0475,
+      "p_snpp_given_n20_pm1day": 0.0845,
+      "p_n20_given_snpp_pm1day": 0.0913,
+      "season_cells_n20": 39412,
+      "season_cells_snpp": 36816,
+      "season_cells_jaccard": 0.1841
+    },
+    "2023": {
+      "n20_cell_days": 31348,
+      "snpp_cell_days": 29223,
+      "both_same_day": 1098,
+      "p_snpp_given_n20_same_day": 0.035,
+      "p_n20_given_snpp_same_day": 0.0376,
+      "p_snpp_given_n20_pm1day": 0.0673,
+      "p_n20_given_snpp_pm1day": 0.0724,
+      "season_cells_n20": 27376,
+      "season_cells_snpp": 25825,
+      "season_cells_jaccard": 0.1454
+    },
+    "2024": {
+      "n20_cell_days": 9787,
+      "snpp_cell_days": 8599,
+      "both_same_day": 535,
+      "p_snpp_given_n20_same_day": 0.0547,
+      "p_n20_given_snpp_same_day": 0.0622,
+      "p_snpp_given_n20_pm1day": 0.0641,
+      "p_n20_given_snpp_pm1day": 0.0733,
+      "season_cells_n20": 9306,
+      "season_cells_snpp": 8266,
+      "season_cells_jaccard": 0.073
+    }
+  },
+  "persistent_hotspots": {
+    "cell_m": 500,
+    "min_offseason_years": 3,
+    "n_persistent_cells": 126,
+    "in_season_type0_detections_in_persistent_cells": 132,
+    "share_in_season_type0_in_persistent_cells": 0.00045,
+    "in_season_type2_detections": 70,
+    "type2_cells_also_flagged_persistent": 8,
+    "type2_cells_total": 8
+  },
+  "detection_time_drift": {
+    "viirs_noaa20": {
+      "2019": {
+        "median_local_detection_hour": 13.533,
+        "share_detections_after_14h_ist": 0.2576,
+        "corr_daily_count_vs_overpass_hour": -0.041
+      },
+      "2020": {
+        "median_local_detection_hour": 13.633,
+        "share_detections_after_14h_ist": 0.2747,
+        "corr_daily_count_vs_overpass_hour": 0.005
+      },
+      "2021": {
+        "median_local_detection_hour": 13.733,
+        "share_detections_after_14h_ist": 0.2871,
+        "corr_daily_count_vs_overpass_hour": 0.128
+      },
+      "2022": {
+        "median_local_detection_hour": 13.633,
+        "share_detections_after_14h_ist": 0.1985,
+        "corr_daily_count_vs_overpass_hour": -0.067
+      },
+      "2023": {
+        "median_local_detection_hour": 13.633,
+        "share_detections_after_14h_ist": 0.2481,
+        "corr_daily_count_vs_overpass_hour": 0.072
+      },
+      "2024": {
+        "median_local_detection_hour": 13.717,
+        "share_detections_after_14h_ist": 0.3301,
+        "corr_daily_count_vs_overpass_hour": 0.178
+      }
+    },
+    "viirs_snpp": {
+      "2019": {
+        "median_local_detection_hour": 13.75,
+        "share_detections_after_14h_ist": 0.2476,
+        "corr_daily_count_vs_overpass_hour": 0.047
+      },
+      "2020": {
+        "median_local_detection_hour": 13.633,
+        "share_detections_after_14h_ist": 0.2823,
+        "corr_daily_count_vs_overpass_hour": 0.111
+      },
+      "2021": {
+        "median_local_detection_hour": 13.55,
+        "share_detections_after_14h_ist": 0.2272,
+        "corr_daily_count_vs_overpass_hour": 0.027
+      },
+      "2022": {
+        "median_local_detection_hour": 13.65,
+        "share_detections_after_14h_ist": 0.2515,
+        "corr_daily_count_vs_overpass_hour": 0.031
+      },
+      "2023": {
+        "median_local_detection_hour": 13.75,
+        "share_detections_after_14h_ist": 0.267,
+        "corr_daily_count_vs_overpass_hour": 0.114
+      },
+      "2024": {
+        "median_local_detection_hour": 13.633,
+        "share_detections_after_14h_ist": 0.1941,
+        "corr_daily_count_vs_overpass_hour": 0.069
+      }
+    }
+  },
+  "cells_noaa20": {
+    "300": {
+      "total_state_cells_upper_bound": 561235,
+      "per_season": {
+        "2019": {
+          "burned_cells": 41246,
+          "share_of_state_cells_upper_bound_denominator": 0.0735,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.057,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 1878.8,
+            "positives_per_issue_day_median": 669.0,
+            "positives_per_issue_day_max": 11225,
+            "positive_rate_vs_all_state_cells_mean": 0.00335
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 4593.0,
+            "positives_per_issue_day_median": 2029.0,
+            "positives_per_issue_day_max": 17119,
+            "positive_rate_vs_all_state_cells_mean": 0.00818
+          }
+        },
+        "2020": {
+          "burned_cells": 68715,
+          "share_of_state_cells_upper_bound_denominator": 0.1224,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.1001,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 3257.9,
+            "positives_per_issue_day_median": 1468.0,
+            "positives_per_issue_day_max": 13049,
+            "positive_rate_vs_all_state_cells_mean": 0.0058
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 7883.0,
+            "positives_per_issue_day_median": 3994.0,
+            "positives_per_issue_day_max": 27215,
+            "positive_rate_vs_all_state_cells_mean": 0.01405
+          }
+        },
+        "2021": {
+          "burned_cells": 68881,
+          "share_of_state_cells_upper_bound_denominator": 0.1227,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.0898,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 3236.0,
+            "positives_per_issue_day_median": 854.0,
+            "positives_per_issue_day_max": 15054,
+            "positive_rate_vs_all_state_cells_mean": 0.00577
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 7853.4,
+            "positives_per_issue_day_median": 2988.0,
+            "positives_per_issue_day_max": 31993,
+            "positive_rate_vs_all_state_cells_mean": 0.01399
+          }
+        },
+        "2022": {
+          "burned_cells": 45913,
+          "share_of_state_cells_upper_bound_denominator": 0.0818,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.0626,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 2108.2,
+            "positives_per_issue_day_median": 801.0,
+            "positives_per_issue_day_max": 9561,
+            "positive_rate_vs_all_state_cells_mean": 0.00376
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 5153.2,
+            "positives_per_issue_day_median": 2115.0,
+            "positives_per_issue_day_max": 17952,
+            "positive_rate_vs_all_state_cells_mean": 0.00918
+          }
+        },
+        "2023": {
+          "burned_cells": 31054,
+          "share_of_state_cells_upper_bound_denominator": 0.0553,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.0521,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 1414.1,
+            "positives_per_issue_day_median": 361.0,
+            "positives_per_issue_day_max": 5699,
+            "positive_rate_vs_all_state_cells_mean": 0.00252
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 3460.6,
+            "positives_per_issue_day_median": 1182.0,
+            "positives_per_issue_day_max": 12303,
+            "positive_rate_vs_all_state_cells_mean": 0.00617
+          }
+        },
+        "2024": {
+          "burned_cells": 9983,
+          "share_of_state_cells_upper_bound_denominator": 0.0178,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.0201,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 440.3,
+            "positives_per_issue_day_median": 247.0,
+            "positives_per_issue_day_max": 1836,
+            "positive_rate_vs_all_state_cells_mean": 0.00078
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 1082.6,
+            "positives_per_issue_day_median": 547.0,
+            "positives_per_issue_day_max": 2754,
+            "positive_rate_vs_all_state_cells_mean": 0.00193
+          }
+        }
+      },
+      "season_to_season_persistence": {
+        "2019->2020": {
+          "p_burn_given_burned_prev": 0.2016,
+          "share_of_current_burned_cells_that_burned_prev": 0.121
+        },
+        "2020->2021": {
+          "p_burn_given_burned_prev": 0.1975,
+          "share_of_current_burned_cells_that_burned_prev": 0.197
+        },
+        "2021->2022": {
+          "p_burn_given_burned_prev": 0.1346,
+          "share_of_current_burned_cells_that_burned_prev": 0.2019
+        },
+        "2022->2023": {
+          "p_burn_given_burned_prev": 0.0964,
+          "share_of_current_burned_cells_that_burned_prev": 0.1425
+        },
+        "2023->2024": {
+          "p_burn_given_burned_prev": 0.0339,
+          "share_of_current_burned_cells_that_burned_prev": 0.1055
+        }
+      }
+    },
+    "500": {
+      "total_state_cells_upper_bound": 202044,
+      "per_season": {
+        "2019": {
+          "burned_cells": 35829,
+          "share_of_state_cells_upper_bound_denominator": 0.1773,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.1457,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 1767.1,
+            "positives_per_issue_day_median": 647.0,
+            "positives_per_issue_day_max": 10386,
+            "positive_rate_vs_all_state_cells_mean": 0.00875
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 4242.2,
+            "positives_per_issue_day_median": 1935.0,
+            "positives_per_issue_day_max": 15457,
+            "positive_rate_vs_all_state_cells_mean": 0.021
+          }
+        },
+        "2020": {
+          "burned_cells": 55651,
+          "share_of_state_cells_upper_bound_denominator": 0.2754,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.2449,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 3029.2,
+            "positives_per_issue_day_median": 1371.0,
+            "positives_per_issue_day_max": 12023,
+            "positive_rate_vs_all_state_cells_mean": 0.01499
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 7097.5,
+            "positives_per_issue_day_median": 3733.0,
+            "positives_per_issue_day_max": 23639,
+            "positive_rate_vs_all_state_cells_mean": 0.03513
+          }
+        },
+        "2021": {
+          "burned_cells": 56384,
+          "share_of_state_cells_upper_bound_denominator": 0.2791,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.2284,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 3007.6,
+            "positives_per_issue_day_median": 807.0,
+            "positives_per_issue_day_max": 14009,
+            "positive_rate_vs_all_state_cells_mean": 0.01489
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 7070.2,
+            "positives_per_issue_day_median": 2814.0,
+            "positives_per_issue_day_max": 28007,
+            "positive_rate_vs_all_state_cells_mean": 0.03499
+          }
+        },
+        "2022": {
+          "burned_cells": 39412,
+          "share_of_state_cells_upper_bound_denominator": 0.1951,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.1646,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 1986.5,
+            "positives_per_issue_day_median": 761.0,
+            "positives_per_issue_day_max": 8893,
+            "positive_rate_vs_all_state_cells_mean": 0.00983
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 4758.0,
+            "positives_per_issue_day_median": 2020.0,
+            "positives_per_issue_day_max": 16281,
+            "positive_rate_vs_all_state_cells_mean": 0.02355
+          }
+        },
+        "2023": {
+          "burned_cells": 27376,
+          "share_of_state_cells_upper_bound_denominator": 0.1355,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.1292,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 1339.1,
+            "positives_per_issue_day_median": 355.0,
+            "positives_per_issue_day_max": 5319,
+            "positive_rate_vs_all_state_cells_mean": 0.00663
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 3226.8,
+            "positives_per_issue_day_median": 1108.0,
+            "positives_per_issue_day_max": 11286,
+            "positive_rate_vs_all_state_cells_mean": 0.01597
+          }
+        },
+        "2024": {
+          "burned_cells": 9306,
+          "share_of_state_cells_upper_bound_denominator": 0.0461,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.049,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 421.0,
+            "positives_per_issue_day_median": 240.0,
+            "positives_per_issue_day_max": 1744,
+            "positive_rate_vs_all_state_cells_mean": 0.00208
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 1030.9,
+            "positives_per_issue_day_median": 521.0,
+            "positives_per_issue_day_max": 2612,
+            "positive_rate_vs_all_state_cells_mean": 0.0051
+          }
+        }
+      },
+      "season_to_season_persistence": {
+        "2019->2020": {
+          "p_burn_given_burned_prev": 0.4365,
+          "share_of_current_burned_cells_that_burned_prev": 0.281
+        },
+        "2020->2021": {
+          "p_burn_given_burned_prev": 0.4257,
+          "share_of_current_burned_cells_that_burned_prev": 0.4202
+        },
+        "2021->2022": {
+          "p_burn_given_burned_prev": 0.3052,
+          "share_of_current_burned_cells_that_burned_prev": 0.4366
+        },
+        "2022->2023": {
+          "p_burn_given_burned_prev": 0.2246,
+          "share_of_current_burned_cells_that_burned_prev": 0.3233
+        },
+        "2023->2024": {
+          "p_burn_given_burned_prev": 0.083,
+          "share_of_current_burned_cells_that_burned_prev": 0.244
+        }
+      }
+    },
+    "1000": {
+      "total_state_cells_upper_bound": 50511,
+      "per_season": {
+        "2019": {
+          "burned_cells": 22985,
+          "share_of_state_cells_upper_bound_denominator": 0.455,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.4219,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 1504.1,
+            "positives_per_issue_day_median": 593.0,
+            "positives_per_issue_day_max": 8238,
+            "positive_rate_vs_all_state_cells_mean": 0.02978
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 3389.1,
+            "positives_per_issue_day_median": 1713.0,
+            "positives_per_issue_day_max": 11448,
+            "positive_rate_vs_all_state_cells_mean": 0.0671
+          }
+        },
+        "2020": {
+          "burned_cells": 29524,
+          "share_of_state_cells_upper_bound_denominator": 0.5845,
+          "median_distinct_fire_days_per_burned_cell": 2.0,
+          "share_burned_cells_with_ge2_fire_days": 0.6067,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 2478.7,
+            "positives_per_issue_day_median": 1218.0,
+            "positives_per_issue_day_max": 9317,
+            "positive_rate_vs_all_state_cells_mean": 0.04907
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 5238.3,
+            "positives_per_issue_day_median": 3103.0,
+            "positives_per_issue_day_max": 15375,
+            "positive_rate_vs_all_state_cells_mean": 0.10371
+          }
+        },
+        "2021": {
+          "burned_cells": 30177,
+          "share_of_state_cells_upper_bound_denominator": 0.5974,
+          "median_distinct_fire_days_per_burned_cell": 2.0,
+          "share_burned_cells_with_ge2_fire_days": 0.597,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 2436.2,
+            "positives_per_issue_day_median": 723.0,
+            "positives_per_issue_day_max": 10918,
+            "positive_rate_vs_all_state_cells_mean": 0.04823
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 5156.1,
+            "positives_per_issue_day_median": 2425.0,
+            "positives_per_issue_day_max": 18369,
+            "positive_rate_vs_all_state_cells_mean": 0.10208
+          }
+        },
+        "2022": {
+          "burned_cells": 24304,
+          "share_of_state_cells_upper_bound_denominator": 0.4812,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.4725,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 1691.5,
+            "positives_per_issue_day_median": 679.0,
+            "positives_per_issue_day_max": 7143,
+            "positive_rate_vs_all_state_cells_mean": 0.03349
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 3765.3,
+            "positives_per_issue_day_median": 1768.0,
+            "positives_per_issue_day_max": 12048,
+            "positive_rate_vs_all_state_cells_mean": 0.07454
+          }
+        },
+        "2023": {
+          "burned_cells": 18329,
+          "share_of_state_cells_upper_bound_denominator": 0.3629,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.3815,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 1167.1,
+            "positives_per_issue_day_median": 333.0,
+            "positives_per_issue_day_max": 4485,
+            "positive_rate_vs_all_state_cells_mean": 0.02311
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 2655.6,
+            "positives_per_issue_day_median": 986.0,
+            "positives_per_issue_day_max": 8830,
+            "positive_rate_vs_all_state_cells_mean": 0.05257
+          }
+        },
+        "2024": {
+          "burned_cells": 7710,
+          "share_of_state_cells_upper_bound_denominator": 0.1526,
+          "median_distinct_fire_days_per_burned_cell": 1.0,
+          "share_burned_cells_with_ge2_fire_days": 0.1619,
+          "h3": {
+            "issue_days": 69,
+            "positives_per_issue_day_mean": 388.5,
+            "positives_per_issue_day_median": 222.0,
+            "positives_per_issue_day_max": 1558,
+            "positive_rate_vs_all_state_cells_mean": 0.00769
+          },
+          "h7": {
+            "issue_days": 65,
+            "positives_per_issue_day_mean": 931.9,
+            "positives_per_issue_day_median": 489.0,
+            "positives_per_issue_day_max": 2314,
+            "positive_rate_vs_all_state_cells_mean": 0.01845
+          }
+        }
+      },
+      "season_to_season_persistence": {
+        "2019->2020": {
+          "p_burn_given_burned_prev": 0.7989,
+          "share_of_current_burned_cells_that_burned_prev": 0.6219
+        },
+        "2020->2021": {
+          "p_burn_given_burned_prev": 0.7905,
+          "share_of_current_burned_cells_that_burned_prev": 0.7734
+        },
+        "2021->2022": {
+          "p_burn_given_burned_prev": 0.6502,
+          "share_of_current_burned_cells_that_burned_prev": 0.8073
+        },
+        "2022->2023": {
+          "p_burn_given_burned_prev": 0.5242,
+          "share_of_current_burned_cells_that_burned_prev": 0.695
+        },
+        "2023->2024": {
+          "p_burn_given_burned_prev": 0.2362,
+          "share_of_current_burned_cells_that_burned_prev": 0.5615
+        }
+      }
+    }
+  },
+  "haryana_season_totals_noaa20_type0": {
+    "2019": 6283,
+    "2020": 6125,
+    "2021": 10422,
+    "2022": 4842,
+    "2023": 3112,
+    "2024": 2099
+  }
+}

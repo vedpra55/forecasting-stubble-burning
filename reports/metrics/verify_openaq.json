@@ -1,0 +1,10 @@
+{
+  "name": "verify_openaq",
+  "created_utc": "2026-11-04T18:24:39+00:00",
+  "git_sha": null,
+  "script": "verify_openaq.py",
+  "params": {},
+  "status": "skipped",
+  "reason": "OPENAQ_API_KEY not set (only needed for Phase 8)",
+  "wall_seconds": 0.0
+}

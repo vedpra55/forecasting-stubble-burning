@@ -1,0 +1,530 @@
+{
+  "name": "verify_firms_yearly",
+  "created_utc": "2026-11-04T18:24:38+00:00",
+  "git_sha": null,
+  "script": "verify_firms.py",
+  "params": {},
+  "status": "pass",
+  "source": "FIRMS yearly country CSV (public)",
+  "per_sensor": {
+    "viirs_noaa20": {
+      "columns": [
+        "latitude",
+        "longitude",
+        "bright_ti4",
+        "scan",
+        "track",
+        "acq_date",
+        "acq_time",
+        "satellite",
+        "instrument",
+        "confidence",
+        "version",
+        "bright_ti5",
+        "frp",
+        "daynight",
+        "type"
+      ],
+      "per_year": {
+        "2019": {
+          "rows_in_bbox": 90795,
+          "min_date": "2019-01-01",
+          "max_date": "2019-12-31",
+          "versions": [
+            "2"
+          ],
+          "confidence_values": [
+            "h",
+            "l",
+            "n"
+          ],
+          "type_values": [
+            0,
+            2,
+            3
+          ],
+          "satellites": [
+            "N20"
+          ]
+        },
+        "2020": {
+          "rows_in_bbox": 114388,
+          "min_date": "2020-01-01",
+          "max_date": "2020-12-31",
+          "versions": [
+            "2"
+          ],
+          "confidence_values": [
+            "h",
+            "l",
+            "n"
+          ],
+          "type_values": [
+            0,
+            2,
+            3
+          ],
+          "satellites": [
+            "N20"
+          ]
+        },
+        "2021": {
+          "rows_in_bbox": 122850,
+          "min_date": "2021-01-01",
+          "max_date": "2021-12-31",
+          "versions": [
+            "2"
+          ],
+          "confidence_values": [
+            "h",
+            "l",
+            "n"
+          ],
+          "type_values": [
+            0,
+            2,
+            3
+          ],
+          "satellites": [
+            "N20"
+          ]
+        },
+        "2022": {
+          "rows_in_bbox": 93330,
+          "min_date": "2022-01-01",
+          "max_date": "2022-12-31",
+          "versions": [
+            "2"
+          ],
+          "confidence_values": [
+            "h",
+            "l",
+            "n"
+          ],
+          "type_values": [
+            0,
+            2,
+            3
+          ],
+          "satellites": [
+            "N20"
+          ]
+        },
+        "2023": {
+          "rows_in_bbox": 69491,
+          "min_date": "2023-01-01",
+          "max_date": "2023-12-31",
+          "versions": [
+            "2"
+          ],
+          "confidence_values": [
+            "h",
+            "l",
+            "n"
+          ],
+          "type_values": [
+            0,
+            2,
+            3
+          ],
+          "satellites": [
+            "N20"
+          ]
+        },
+        "2024": {
+          "rows_in_bbox": 59909,
+          "min_date": "2024-01-01",
+          "max_date": "2024-12-31",
+          "versions": [
+            "2"
+          ],
+          "confidence_values": [
+            "h",
+            "l",
+            "n"
+          ],
+          "type_values": [
+            0,
+            2,
+            3
+          ],
+          "satellites": [
+            "N20"
+          ]
+        }
+      }
+    },
+    "viirs_snpp": {
+      "columns": [
+        "latitude",
+        "longitude",
+        "bright_ti4",
+        "scan",
+        "track",
+        "acq_date",
+        "acq_time",
+        "satellite",
+        "instrument",
+        "confidence",
+        "version",
+        "bright_ti5",
+        "frp",
+        "daynight",
+        "type"
+      ],
+      "per_year": {
+        "2019": {
+          "rows_in_bbox": 89941,
+          "min_date": "2019-01-01",
+          "max_date": "2019-12-31",
+          "versions": [
+            "2"
+          ],
+          "confidence_values": [
+            "h",
+            "l",
+            "n"
+          ],
+          "type_values": [
+            0,
+            2,
+            3
+          ],
+          "satellites": [
+            "N"
+          ]
+        },
+        "2020": {
+          "rows_in_bbox": 112383,
+          "min_date": "2020-01-01",
+          "max_date": "2020-12-31",
+          "versions": [
+            "2"
+          ],
+          "confidence_values": [
+            "h",
+            "l",
+            "n"
+          ],
+          "type_values": [
+            0,
+            2,
+            3
+          ],
+          "satellites": [
+            "N"
+          ]
+        },
+        "2021": {
+          "rows_in_bbox": 122126,
+          "min_date": "2021-01-01",
+          "max_date": "2021-12-31",
+          "versions": [
+            "2"
+          ],
+          "confidence_values": [
+            "h",
+            "l",
+            "n"
+          ],
+          "type_values": [
+            0,
+            2,
+            3
+          ],
+          "satellites": [
+            "N"
+          ]
+        },
+        "2022": {
+          "rows_in_bbox": 90613,
+          "min_date": "2022-01-01",
+          "max_date": "2022-12-31",
+          "versions": [
+            "2"
+          ],
+          "confidence_values": [
+            "h",
+            "l",
+            "n"
+          ],
+          "type_values": [
+            0,
+            2,
+            3
+          ],
+          "satellites": [
+            "N"
+          ]
+        },
+        "2023": {
+          "rows_in_bbox": 66946,
+          "min_date": "2023-01-01",
+          "max_date": "2023-12-31",
+          "versions": [
+            "2"
+          ],
+          "confidence_values": [
+            "h",
+            "l",
+            "n"
+          ],
+          "type_values": [
+            0,
+            2,
+            3
+          ],
+          "satellites": [
+            "N"
+          ]
+        },
+        "2024": {
+          "rows_in_bbox": 57133,
+          "min_date": "2024-01-01",
+          "max_date": "2024-12-31",
+          "versions": [
+            "2"
+          ],
+          "confidence_values": [
+            "h",
+            "l",
+            "n"
+          ],
+          "type_values": [
+            0,
+            2,
+            3
+          ],
+          "satellites": [
+            "N"
+          ]
+        }
+      }
+    },
+    "modis": {
+      "columns": [
+        "latitude",
+        "longitude",
+        "brightness",
+        "scan",
+        "track",
+        "acq_date",
+        "acq_time",
+        "satellite",
+        "instrument",
+        "confidence",
+        "version",
+        "bright_t31",
+        "frp",
+        "daynight",
+        "type"
+      ],
+      "per_year": {
+        "2019": {
+          "rows_in_bbox": 18101,
+          "min_date": "2019-01-01",
+          "max_date": "2019-12-31",
+          "versions": [
+            "6.03"
+          ],
+          "confidence_values": [
+            "0",
+            "1",
+            "10",
+            "100",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16"
+          ],
+          "type_values": [
+            0,
+            2
+          ],
+          "satellites": [
+            "Aqua",
+            "Terra"
+          ]
+        },
+        "2020": {
+          "rows_in_bbox": 22558,
+          "min_date": "2020-01-02",
+          "max_date": "2020-12-31",
+          "versions": [
+            "6.03"
+          ],
+          "confidence_values": [
+            "0",
+            "10",
+            "100",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17"
+          ],
+          "type_values": [
+            0,
+            2
+          ],
+          "satellites": [
+            "Aqua",
+            "Terra"
+          ]
+        },
+        "2021": {
+          "rows_in_bbox": 25232,
+          "min_date": "2021-01-01",
+          "max_date": "2021-12-31",
+          "versions": [
+            "6.03"
+          ],
+          "confidence_values": [
+            "0",
+            "10",
+            "100",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17"
+          ],
+          "type_values": [
+            0,
+            2
+          ],
+          "satellites": [
+            "Aqua",
+            "Terra"
+          ]
+        },
+        "2022": {
+          "rows_in_bbox": 18140,
+          "min_date": "2022-01-01",
+          "max_date": "2022-12-31",
+          "versions": [
+            "6.03"
+          ],
+          "confidence_values": [
+            "0",
+            "10",
+            "100",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17"
+          ],
+          "type_values": [
+            0,
+            2
+          ],
+          "satellites": [
+            "Aqua",
+            "Terra"
+          ]
+        },
+        "2023": {
+          "rows_in_bbox": 13013,
+          "min_date": "2023-01-01",
+          "max_date": "2023-12-29",
+          "versions": [
+            "61.03"
+          ],
+          "confidence_values": [
+            "0",
+            "10",
+            "100",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17"
+          ],
+          "type_values": [
+            0,
+            2
+          ],
+          "satellites": [
+            "Aqua",
+            "Terra"
+          ]
+        },
+        "2024": {
+          "rows_in_bbox": 11133,
+          "min_date": "2024-01-01",
+          "max_date": "2024-12-26",
+          "versions": [
+            "61.03"
+          ],
+          "confidence_values": [
+            "0",
+            "10",
+            "100",
+            "11",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18"
+          ],
+          "type_values": [
+            0,
+            2
+          ],
+          "satellites": [
+            "Aqua",
+            "Terra"
+          ]
+        }
+      }
+    }
+  },
+  "test_season_files_head_only": {
+    "viirs_noaa20_2025": {
+      "http": 200,
+      "last_modified": "Sat, 10 Oct 2026 13:26:49 GMT"
+    },
+    "viirs_noaa20_2026": {
+      "http": 404,
+      "last_modified": null
+    },
+    "viirs_snpp_2025": {
+      "http": 200,
+      "last_modified": "Sat, 10 Oct 2026 13:22:43 GMT"
+    },
+    "viirs_snpp_2026": {
+      "http": 404,
+      "last_modified": null
+    },
+    "modis_2025": {
+      "http": 200,
+      "last_modified": "Sat, 10 Oct 2026 13:17:41 GMT"
+    },
+    "modis_2026": {
+      "http": 404,
+      "last_modified": null
+    },
+    "viirs_noaa21_2025": {
+      "http": 404,
+      "last_modified": null
+    },
+    "viirs_noaa21_2026": {
+      "http": 404,
+      "last_modified": null
+    }
+  },
+  "viirs_confidence_categorical_lnh": true,
+  "wall_seconds": 4.4
+}

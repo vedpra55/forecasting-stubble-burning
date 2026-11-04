@@ -1,0 +1,6 @@
+# Analysis grid. Cell size is a Phase 1 decision; 500 m is the working default.
+cell_size_m: 500
+candidate_cell_sizes_m: [300, 500, 1000]
+crs: EPSG:32643          # UTM zone 43N covers Punjab (72-78 E)
+cropland_class: 40        # ESA WorldCover v200 "Cropland"
+min_cropland_fraction: 0.5

@@ -1,0 +1,11 @@
+# Season window (month-day, inclusive) and splits. Splits by season only (CLAUDE.md rule 2).
+season_start: "09-25"
+season_end: "12-05"
+lookback_days: 60          # feature history before each issue date
+seasons: [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]
+splits:
+  train: [2019, 2020, 2021, 2022, 2023]
+  validate: [2024]
+  test: [2025, 2026]       # sacred: Phase 6 only, every touch logged in docs/TEST_LOG.md
+# Seasons Phase 1 EDA may read. Excludes test seasons by owner decision (2026-11-04).
+eda_seasons: [2019, 2020, 2021, 2022, 2023, 2024]

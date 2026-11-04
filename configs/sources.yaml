@@ -1,0 +1,25 @@
+# Dataset IDs and API endpoints. Verified 2026-11-04; see reports/metrics/verify_*.json.
+gee:
+  s2: COPERNICUS/S2_SR_HARMONIZED
+  cloud_score_plus: GOOGLE/CLOUD_SCORE_PLUS/V1/S2_HARMONIZED
+  cloud_score_band: cs_cdf
+  cloud_score_threshold: 0.60     # catalog guidance: 0.50-0.65
+  s1: COPERNICUS/S1_GRD
+  worldcover: ESA/WorldCover/v200
+  era5_land_daily: ECMWF/ERA5_LAND/DAILY_AGGR
+  era5_bands: [temperature_2m, dewpoint_temperature_2m, u_component_of_wind_10m,
+               v_component_of_wind_10m, total_precipitation_sum, surface_pressure]
+firms:
+  # Public yearly per-country CSVs (no key needed). NOAA-20 is filed as "viirs-jpss1".
+  yearly_country_url: https://firms.modaps.eosdis.nasa.gov/data/country/{folder}/{year}/{folder}_{year}_{country}.csv
+  sensors:
+    viirs_noaa20: {folder: viirs-jpss1, instrument: VIIRS}
+    viirs_snpp: {folder: viirs-snpp, instrument: VIIRS}
+    modis: {folder: modis, instrument: MODIS}
+  area_api_url: https://firms.modaps.eosdis.nasa.gov/api/area/csv/{key}/{source}/{bbox}/{days}/{date}
+  area_api_max_days: 5
+  # S-NPP science data delivery ended 2026-11-02 (NOAA NESDIS notice).
+  snpp_end_date: "2026-11-02"
+openaq:
+  base_url: https://api.openaq.org/v3
+  auth_header: X-API-Key

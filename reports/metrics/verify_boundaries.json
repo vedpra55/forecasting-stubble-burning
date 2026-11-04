@@ -1,0 +1,10 @@
+{
+  "name": "verify_boundaries",
+  "created_utc": "2026-11-04T18:24:46+00:00",
+  "git_sha": null,
+  "script": "verify_boundaries.py",
+  "params": {},
+  "status": "skipped",
+  "reason": "Project stubblecast is not registered to use Earth Engine. Visit https://console.cloud.google.com/earth-engine/configuration?project=stubblecast to register your project. See https://developers.google.com/earth-engine/guides/access for more details.",
+  "wall_seconds": 1.2
+}

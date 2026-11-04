@@ -1,0 +1,10 @@
+{
+  "name": "verify_firms_api",
+  "created_utc": "2026-11-04T18:24:38+00:00",
+  "git_sha": null,
+  "script": "verify_firms.py",
+  "params": {},
+  "status": "skipped",
+  "reason": "FIRMS_MAP_KEY not set (not needed for history; needed for 2026 NRT)",
+  "wall_seconds": 0.0
+}

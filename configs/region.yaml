@@ -1,0 +1,18 @@
+# Study region. Pilot districts are decided at the Phase 1 gate (see docs/DECISIONS.md).
+state: Punjab
+country: India
+later_states: [Haryana]
+# Bounding box used only to pre-filter FIRMS CSVs (lon_min, lat_min, lon_max, lat_max).
+# Covers Punjab + Haryana with margin; exact clipping uses district polygons.
+prefilter_bbox: [73.7, 27.5, 77.8, 32.7]
+# Punjab state bounding box (approximate, used for quick plots).
+punjab_bbox: [73.85, 29.5, 76.95, 32.55]
+boundaries:
+  # Primary: FAO GAUL 2025 level-2 (via Earth Engine). Field names verified in verify_boundaries.py.
+  gee_collection: FAO/GAUL/2025/level2
+  # Fallback when GEE is unavailable: geoBoundaries ADM2 for India (CC BY 4.0).
+  geoboundaries_api: https://www.geoboundaries.org/api/current/gbOpen/IND/ADM2/
+pilot_districts: []          # set at the Phase 1 gate
+cost_pilot_district: Sangrur # district used for the GEE cost measurement
+# Candidates evaluated in Phase 1 (cropland cell counts in verify_worldcover.py)
+candidate_pilot_districts: [Sangrur, Tarn Taran, Bathinda]
