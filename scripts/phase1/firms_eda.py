@@ -113,6 +113,10 @@ def timing(fires: pd.DataFrame, seasons: list[int]) -> tuple[dict, pd.DataFrame]
             "days_q10_to_q90": (date.fromisoformat(q["q90"]) -
                                 date.fromisoformat(q["q10"])).days,
             "zero_fire_days": int((counts == 0).sum()),
+            # days inside the q10-q90 core with < 10% of the peak-day count: candidates for
+            # cloud/smoke cover or unfavourable overpass geometry (tested in Phase 2/3)
+            "low_days_in_core": [str(d) for d, c in counts.items()
+                                 if q["q10"] <= str(d) <= q["q90"] and c < 0.1 * counts.max()],
         }
         for i, (d, c) in enumerate(counts.items()):
             rows.append({"season": s, "date": d, "day_of_season": i, "count": int(c),
@@ -193,6 +197,33 @@ def sensor_agreement(df: pd.DataFrame, cell_m: int = 500) -> dict:
             "season_cells_n20": len(c20), "season_cells_snpp": len(cnp),
             "season_cells_jaccard": round(len(c20 & cnp) / len(c20 | cnp), 4),
         }
+    return out
+
+
+def agreement_vs_scale(df: pd.DataFrame, sizes=(375, 500, 1000, 2000, 5000)) -> dict:
+    """Same-day NOAA-20 -> S-NPP agreement as a function of cell size, plus overpass gap.
+
+    If agreement rises steeply with cell size, disagreement is mostly fires that are
+    short-lived relative to the ~50 min gap between the two overpasses (each sensor sees a
+    different subset of fields), not geolocation error.
+    """
+    sub = df[(df.state == "Punjab") & df.in_season & (df["type"] == 0)
+             & df.sensor.isin(["viirs_noaa20", "viirs_snpp"])].copy()
+    sub["local_h"] = (sub.acq_hour_utc + 5.5) % 24
+    gap = (sub.groupby(["acq_date", "sensor"]).local_h.median().unstack().dropna())
+    gap_min = ((gap["viirs_noaa20"] - gap["viirs_snpp"]).abs() * 60)
+    out = {"overpass_gap_minutes_median": round(float(gap_min.median()), 1),
+           "overpass_gap_minutes_iqr": [round(float(gap_min.quantile(0.25)), 1),
+                                        round(float(gap_min.quantile(0.75)), 1)]}
+    for cell_m in sizes:
+        sub["cell"] = grid.cell_id(sub.longitude.values, sub.latitude.values, cell_m)
+        per = {}
+        for s, g in sub.groupby("season"):
+            a, b = g[g.sensor == "viirs_noaa20"], g[g.sensor == "viirs_snpp"]
+            n20 = set(zip(a.cell, a.acq_date, strict=True))
+            snpp = set(zip(b.cell, b.acq_date, strict=True))
+            per[int(s)] = round(len(n20 & snpp) / len(n20), 4)
+        out[f"p_snpp_given_n20_same_day_{cell_m}m"] = per
     return out
 
 
@@ -469,6 +500,7 @@ def main() -> None:
     timing_out, daily = timing(fires, seasons)
     district_out, tab = district_table(fires, seasons)
     agree = sensor_agreement(df)
+    agree_scale = agreement_vs_scale(df)
     hot = persistent_hotspots(df)
     drift = detection_time_drift(df)
     cells = cell_stats(fires, seasons, punjab_area)
@@ -492,6 +524,7 @@ def main() -> None:
         "timing_noaa20": timing_out,
         "districts_noaa20": district_out,
         "viirs_sensor_agreement_500m": agree,
+        "viirs_agreement_vs_cell_size": agree_scale,
         "persistent_hotspots": hot,
         "detection_time_drift": drift,
         "cells_noaa20": {str(k): v for k, v in cells.items()},

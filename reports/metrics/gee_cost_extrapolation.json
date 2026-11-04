@@ -1,0 +1,9 @@
+{
+  "name": "gee_cost_extrapolation",
+  "created_utc": "2026-11-04T18:29:11+00:00",
+  "git_sha": "81eccde-dirty",
+  "script": "cost_extrapolate.py",
+  "params": {},
+  "status": "not_measured",
+  "reason": "gee_cost_pilot.json and a passing verify_worldcover.json are required"
+}
