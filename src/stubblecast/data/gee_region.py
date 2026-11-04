@@ -28,5 +28,7 @@ def state_shape(state: str):
 def to_ee(geom, simplify: float = SIMPLIFY_DEG):
     import ee
 
+    if geom.geom_type == "Point":  # EE's Point constructor rejects `geodesic`
+        return ee.Geometry.Point([geom.x, geom.y], proj="EPSG:4326")
     g = geom.simplify(simplify, preserve_topology=True)
     return ee.Geometry(mapping(g), proj="EPSG:4326", geodesic=False)

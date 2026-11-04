@@ -1,13 +1,15 @@
 """Earth Engine authentication from a service account.
 
 Credentials are read, in order, from:
-  1. GEE_SERVICE_ACCOUNT_KEY  - the key JSON itself (cloud secret)
+  1. GEE_SERVICE_ACCOUNT_KEY  - the key JSON itself, raw or base64-encoded (cloud secret)
   2. GOOGLE_APPLICATION_CREDENTIALS - path to the key JSON
 The project comes from GEE_PROJECT. Values may be set in a git-ignored .env file.
 """
 
 from __future__ import annotations
 
+import base64
+import binascii
 import json
 import os
 
@@ -25,6 +27,23 @@ class GEEUnavailable(RuntimeError):
     """Raised when Earth Engine credentials are missing or rejected."""
 
 
+def parse_key(value: str) -> dict:
+    """Parse a service-account key given as raw JSON or base64-encoded JSON.
+
+    Cloud secret stores often hold multi-line JSON base64-encoded, so accept both.
+    """
+    text = value.strip()
+    if not text.startswith("{"):
+        try:
+            text = base64.b64decode(text, validate=True).decode("utf-8")
+        except (binascii.Error, UnicodeDecodeError) as e:
+            raise GEEUnavailable("GEE_SERVICE_ACCOUNT_KEY is neither JSON nor base64 JSON") from e
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError as e:
+        raise GEEUnavailable("GEE_SERVICE_ACCOUNT_KEY does not contain valid JSON") from e
+
+
 def initialize() -> str:
     """Initialise Earth Engine; return the project ID. Raises GEEUnavailable."""
     import ee
@@ -34,7 +53,7 @@ def initialize() -> str:
     key_json = os.environ.get("GEE_SERVICE_ACCOUNT_KEY")
     key_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
     if key_json:
-        info = json.loads(key_json)
+        info = parse_key(key_json)
     elif key_path and os.path.exists(key_path):
         with open(key_path) as f:
             info = json.load(f)

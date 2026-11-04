@@ -31,12 +31,15 @@ def check() -> dict:
                                  tileScale=4).get("Map")
         res["cropland_pixel_fraction_30m"] = frac
         for cell in g["candidate_cell_sizes_m"]:
-            proj = ee.Projection(g["crs"]).atScale(cell)
-            cell_frac = (crop.reduceResolution(ee.Reducer.mean(), maxPixels=20000)
-                         .reproject(proj))
+            # No explicit reproject: reduceRegion's crs/scale drives reduceResolution.
+            # tileScale=16 keeps each tile's 10 m input under EE's reprojection limit
+            # (tileScale=4 failed with "Reprojection output too large" at >=500 m).
+            cell_frac = crop.reduceResolution(ee.Reducer.mean(), maxPixels=20000)
             ok = cell_frac.gte(g["min_cropland_fraction"])
-            hist = ok.reduceRegion(ee.Reducer.frequencyHistogram(), region, crs=proj,
-                                   maxPixels=1e10, tileScale=4).get("Map")
+            # unweighted(): count whole cells; the default weights edge cells by overlap.
+            hist = ok.reduceRegion(ee.Reducer.frequencyHistogram().unweighted(), region,
+                                   crs=g["crs"], scale=cell, maxPixels=1e10,
+                                   tileScale=16).get("Map")
             res[f"cells_{cell}m"] = hist
         out[name] = ee.Dictionary(res).getInfo()
         for cell in g["candidate_cell_sizes_m"]:
