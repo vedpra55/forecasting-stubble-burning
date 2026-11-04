@@ -1,7 +1,7 @@
 {
   "name": "firms_eda",
-  "created_utc": "2026-11-04T18:31:22+00:00",
-  "git_sha": "81eccde-dirty",
+  "created_utc": "2026-11-04T19:14:50+00:00",
+  "git_sha": "37916a2-dirty",
   "script": "firms_eda.py",
   "params": {
     "seasons": [

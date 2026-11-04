@@ -1,7 +1,7 @@
 {
   "name": "verify_firms_yearly",
-  "created_utc": "2026-11-04T18:24:38+00:00",
-  "git_sha": null,
+  "created_utc": "2026-11-04T19:12:02+00:00",
+  "git_sha": "37916a2-dirty",
   "script": "verify_firms.py",
   "params": {},
   "status": "pass",
@@ -526,5 +526,5 @@
     }
   },
   "viirs_confidence_categorical_lnh": true,
-  "wall_seconds": 4.4
+  "wall_seconds": 4.5
 }

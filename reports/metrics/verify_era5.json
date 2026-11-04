@@ -1,10 +1,95 @@
 {
   "name": "verify_era5",
-  "created_utc": "2026-11-04T18:24:45+00:00",
-  "git_sha": null,
+  "created_utc": "2026-11-04T19:14:30+00:00",
+  "git_sha": "37916a2-dirty",
   "script": "verify_era5.py",
   "params": {},
-  "status": "skipped",
-  "reason": "Project stubblecast is not registered to use Earth Engine. Visit https://console.cloud.google.com/earth-engine/configuration?project=stubblecast to register your project. See https://developers.google.com/earth-engine/guides/access for more details.",
-  "wall_seconds": 1.1
+  "status": "pass",
+  "dataset": "ECMWF/ERA5_LAND/DAILY_AGGR",
+  "missing_bands": [],
+  "relative_humidity_band_present": false,
+  "samples_sangrur_centroid": [
+    {
+      "date": "2023-10-25",
+      "dewpoint_temperature_2m": 286.5728391011556,
+      "surface_pressure": 98697.34130859375,
+      "temperature_2m": 296.0269374847412,
+      "total_precipitation_sum": 4.351138613856165e-07,
+      "u_component_of_wind_10m": 1.3845024108886719,
+      "v_component_of_wind_10m": -1.3741132020950317,
+      "rh_pct_derived": 55.2,
+      "wind_speed_ms": 1.95
+    },
+    {
+      "date": "2023-10-26",
+      "dewpoint_temperature_2m": 286.44657135009766,
+      "surface_pressure": 98622.0126953125,
+      "temperature_2m": 295.8401908874512,
+      "total_precipitation_sum": 1.2874602361989673e-06,
+      "u_component_of_wind_10m": 1.4670899709065754,
+      "v_component_of_wind_10m": -1.6128342549006145,
+      "rh_pct_derived": 55.4,
+      "wind_speed_ms": 2.18
+    },
+    {
+      "date": "2023-10-27",
+      "dewpoint_temperature_2m": 287.3239269256592,
+      "surface_pressure": 98536.38916015625,
+      "temperature_2m": 296.0081221262614,
+      "total_precipitation_sum": 1.7206273241754388e-06,
+      "u_component_of_wind_10m": 0.7647349039713541,
+      "v_component_of_wind_10m": -1.1630257765452068,
+      "rh_pct_derived": 58.0,
+      "wind_speed_ms": 1.39
+    },
+    {
+      "date": "2023-10-28",
+      "dewpoint_temperature_2m": 289.51037915547687,
+      "surface_pressure": 98575.22379557292,
+      "temperature_2m": 297.0782998402913,
+      "total_precipitation_sum": 0,
+      "u_component_of_wind_10m": 0.6276709238688151,
+      "v_component_of_wind_10m": -0.5862369934717814,
+      "rh_pct_derived": 62.6,
+      "wind_speed_ms": 0.86
+    },
+    {
+      "date": "2023-10-29",
+      "dewpoint_temperature_2m": 290.6078332265218,
+      "surface_pressure": 98598.99739583333,
+      "temperature_2m": 297.11387697855633,
+      "total_precipitation_sum": 1.2646932532334176e-06,
+      "u_component_of_wind_10m": 0.12113698323567708,
+      "v_component_of_wind_10m": -0.9058565298716227,
+      "rh_pct_derived": 67.0,
+      "wind_speed_ms": 0.91
+    },
+    {
+      "date": "2023-10-30",
+      "dewpoint_temperature_2m": 289.9639886220296,
+      "surface_pressure": 98702.84488932292,
+      "temperature_2m": 297.33873240152997,
+      "total_precipitation_sum": 1.716028918963275e-06,
+      "u_component_of_wind_10m": -0.13691202799479166,
+      "v_component_of_wind_10m": -1.0285648504892986,
+      "rh_pct_derived": 63.4,
+      "wind_speed_ms": 1.04
+    },
+    {
+      "date": "2023-10-31",
+      "dewpoint_temperature_2m": 289.04633649190265,
+      "surface_pressure": 98827.89371744792,
+      "temperature_2m": 297.63125737508136,
+      "total_precipitation_sum": 2.1352570911403745e-06,
+      "u_component_of_wind_10m": -0.33425649007161456,
+      "v_component_of_wind_10m": -0.42358020941416424,
+      "rh_pct_derived": 58.8,
+      "wind_speed_ms": 0.54
+    }
+  ],
+  "latest_available_date": "2026-10-26",
+  "latency_days_at_check": 9,
+  "wall_seconds": 2.9,
+  "interactive_eecu_seconds_profiled": 0.46,
+  "profile_raw": " EECU\u00b7s PeakMem Count  Description\n  0.321    3.4M   259  Loading assets: ECMWF/ERA5_LAND/DAILY_RAW/(...)\n  0.125    337k   953  (plumbing)\n  0.005      88    84  Reprojecting pixels from EPSG:4326 to EPSG:4326\n  0.003    186k    16  Loading assets: ECMWF/ERA5_LAND/DAILY_AGGR\n  0.003     30k    99  Algorithm Image.reduceRegion\n  0.001     17k    43  Algorithm Image.select\n  0.001     14k    35  Algorithm ReduceRegion.AggregationContainer\n  0.001     216     9  Listing collection\n  0.000     344     1  Algorithm Collection.reduceColumns with reducer Reducer.max\n   -       112k    70  Loading assets: ECMWF/ERA5_LAND/DAILY_RAW\n   -        57k     4  Algorithm (user-defined function)\n   -        27k     3  Algorithm Collection.toList\n   -        25k     9  Algorithm List.map\n   -        23k    64  Algorithm Element.set\n   -        17k     4  Algorithm Collection.first\n   -        13k     9  Algorithm Collection.map\n   -        12k     2  Algorithm Collection.reduceColumns\n   -       9.8k    28  Algorithm Image.load\n   -       9.8k     6  Algorithm ImageCollection.load\n   -       9.1k     8  Algorithm Projection\n   -       5.6k     6  Algorithm Collection.filter\n   -       5.5k     1  Algorithm Dictionary.(construct from elements)\n   -       4.0k     2  Algorithm DateRange\n   -       3.4k     3  Algorithm AggregateFeatureCollection.max\n   -       3.3k    25  Algorithm Element.copyProperties\n   -       3.2k     9  Algorithm Date.format\n   -       3.1k     6  Algorithm Filter.dateRangeContains\n   -       3.0k     2  Algorithm Date\n   -       3.0k     3  Algorithm Image.bandNames\n   -       3.0k    22  Algorithm Image.date\n   -       3.0k     1  Algorithm GeometryConstructors.Point\n   -       3.0k    22  Algorithm Feature\n   -       2.9k    22  Algorithm Element.toDictionary\n   -       2.9k     2  Algorithm Date.advance\n   -       2.4k     6  Loading assets: ECMWF/ERA5_LAND\n   -        608     8  Algorithm Reducer.first\n   -        224     4  Expression evaluation\n   -         64    84  Algorithm Image.load computing pixels\n"
 }

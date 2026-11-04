@@ -1,7 +1,7 @@
 {
   "name": "geostationary_view_geometry",
-  "created_utc": "2026-11-04T18:58:18+00:00",
-  "git_sha": "392d56c-dirty",
+  "created_utc": "2026-11-04T19:14:50+00:00",
+  "git_sha": "37916a2-dirty",
   "script": "geostationary_geometry.py",
   "params": {},
   "target": {

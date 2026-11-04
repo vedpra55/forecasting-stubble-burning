@@ -1,10 +1,92 @@
 {
   "name": "verify_worldcover",
-  "created_utc": "2026-11-04T18:24:43+00:00",
-  "git_sha": null,
+  "created_utc": "2026-11-04T19:14:27+00:00",
+  "git_sha": "37916a2-dirty",
   "script": "verify_worldcover.py",
   "params": {},
-  "status": "skipped",
-  "reason": "Project stubblecast is not registered to use Earth Engine. Visit https://console.cloud.google.com/earth-engine/configuration?project=stubblecast to register your project. See https://developers.google.com/earth-engine/guides/access for more details.",
-  "wall_seconds": 1.1
+  "status": "pass",
+  "bands": [
+    "Map"
+  ],
+  "cropland_class": 40,
+  "Sangrur": {
+    "cropland_pixel_fraction_30m": 0.9058786351824882,
+    "cells_300m": {
+      "cropland_ge_threshold": 37351,
+      "total": 39823
+    },
+    "cells_500m": {
+      "cropland_ge_threshold": 13630,
+      "total": 14331
+    },
+    "cells_1000m": {
+      "cropland_ge_threshold": 3484,
+      "total": 3567
+    }
+  },
+  "Tarn Taran": {
+    "cropland_pixel_fraction_30m": 0.9034734091794508,
+    "cells_300m": {
+      "cropland_ge_threshold": 25260,
+      "total": 26933
+    },
+    "cells_500m": {
+      "cropland_ge_threshold": 9232,
+      "total": 9706
+    },
+    "cells_1000m": {
+      "cropland_ge_threshold": 2354,
+      "total": 2428
+    }
+  },
+  "Bathinda": {
+    "cropland_pixel_fraction_30m": 0.8766891920206407,
+    "cells_300m": {
+      "cropland_ge_threshold": 33987,
+      "total": 37396
+    },
+    "cells_500m": {
+      "cropland_ge_threshold": 12367,
+      "total": 13459
+    },
+    "cells_1000m": {
+      "cropland_ge_threshold": 3154,
+      "total": 3365
+    }
+  },
+  "Punjab": {
+    "cropland_pixel_fraction_30m": 0.8268697241455883,
+    "cells_300m": {
+      "cropland_ge_threshold": 484567,
+      "total": 560816
+    },
+    "cells_500m": {
+      "cropland_ge_threshold": 177579,
+      "total": 201886
+    },
+    "cells_1000m": {
+      "cropland_ge_threshold": 45537,
+      "total": 50467
+    }
+  },
+  "Haryana": {
+    "cropland_pixel_fraction_30m": 0.8322539127945299,
+    "cells_300m": {
+      "cropland_ge_threshold": 424508,
+      "total": 490269
+    },
+    "cells_500m": {
+      "cropland_ge_threshold": 155290,
+      "total": 176494
+    },
+    "cells_1000m": {
+      "cropland_ge_threshold": 40016,
+      "total": 44135
+    }
+  },
+  "dataset": "ESA/WorldCover/v200",
+  "note": "WorldCover v200 is a single 2021 map; cropland mask is static across seasons.",
+  "wall_seconds": 130.1,
+  "interactive_eecu_seconds_profiled": 5078.682,
+  "profile_raw": " EECU\u00b7s PeakMem Count  Description\n1994.422    305k  2448  Algorithm Image.reduceResolution computing pixels\n1550.934    110M  6028  Algorithm Image.eq computing pixels\n1377.650    881M   612  Reprojection precalculation between EPSG:32643 and EPSG:4326\n 59.897    486k  9322  Algorithm Image.reduceRegion\n 52.355     41M 157173  (plumbing)\n 41.085     55M 152329  Loading assets: ESA/WorldCover/v200/2021@1746488833928724\n  0.645     176  7252  Algorithm Image.constant computing pixels\n  0.423    6.6k  9142  Algorithm ReduceRegion.AggregationContainer\n  0.295      88  4804  Reprojecting pixels from EPSG:4326 to EPSG:4326\n  0.293    3.0k 12849  Algorithm Image.constant\n  0.292    4.5k 10968  Algorithm Image.eq\n  0.184     144  3652  Listing collection\n  0.139    4.6k  3732  Algorithm Image.reduceResolution\n  0.036    4.5k  1896  Algorithm Image.gte\n  0.032     344  1224  Algorithm Image.gte computing pixels\n  0.000    3.2k    15  Algorithm Image.select\n   -       760k  7298  Loading assets: ESA/WorldCover/v200/2021\n   -       465k     5  Algorithm GeometryConstructors.Polygon\n   -       212k 22800  Loading assets: ESA/WorldCover/v200\n   -        10k    24  Algorithm Collection.first\n   -        10k 14584  Algorithm Image.load\n   -       9.9k    18  Algorithm ImageCollection.load\n   -       9.0k  3044  Algorithm Projection\n   -       5.9k     5  Algorithm Dictionary.(construct from elements)\n   -       3.2k    20  Algorithm Dictionary.get\n   -       3.0k     3  Algorithm Image.bandNames\n   -       2.8k   632  Algorithm Reducer.unweighted\n   -       2.5k    24  Loading assets: ESA/WorldCover\n   -        608  3651  Algorithm Reducer.mean\n   -        608   632  Algorithm Reducer.frequencyHistogram\n   -         64  5416  Algorithm Image.load computing pixels\n"
 }
