@@ -80,6 +80,18 @@ def build_grid(region, cell_m: int):
     }))
 
 
+def _point_row(f, props: list[str]):
+    """Compact row with the cell centroid as geometry.
+
+    Export.table.toAsset rejects features with null geometry, so rows carry the cell
+    centroid (from the grid's lon/lat properties: no geometry computation needed).
+    """
+    import ee
+
+    geom = ee.Geometry.Point([f.get("lon"), f.get("lat")])
+    return ee.Feature(geom, f.toDictionary(props))
+
+
 def s2_table(grid, region, start: str, end: str):
     import ee
 
@@ -94,7 +106,10 @@ def s2_table(grid, region, start: str, end: str):
         ndvi = img.normalizedDifference(["B8", "B4"])
         nbr = img.normalizedDifference(["B8", "B12"])
         ndmi = img.normalizedDifference(["B8", "B11"])
-        return ee.Image.cat([ndvi, nbr, ndmi]).rename(names).toFloat()
+        # Image.cat drops properties; keep the timestamp or per-period filterDate()
+        # below matches nothing and every composite is empty.
+        return (ee.Image.cat([ndvi, nbr, ndmi]).rename(names).toFloat()
+                .copyProperties(img, ["system:time_start"]))
 
     s2 = (ee.ImageCollection(src["s2"]).filterBounds(region).filterDate(start, end)
           .linkCollection(csp, [band]).map(prep))
@@ -109,8 +124,8 @@ def s2_table(grid, region, start: str, end: str):
         n = col.select("NDVI").merge(ee.ImageCollection([empty.select("NDVI")])).count()
         img = comp.addBands(n.rename("n_obs"))
         fc = img.reduceRegions(grid, ee.Reducer.mean(), scale=20, tileScale=4)
-        return fc.map(lambda f: ee.Feature(None, f.toDictionary(
-            ["cell_id", "NDVI", "NBR", "NDMI", "n_obs"])).set(
+        return fc.map(lambda f: _point_row(
+            f, ["cell_id", "NDVI", "NBR", "NDMI", "n_obs"]).set(
             "period_start", d.format("YYYY-MM-dd")))
 
     return ee.FeatureCollection(starts.map(per_period)).flatten()
@@ -129,8 +144,7 @@ def s1_table(grid, region, start: str, end: str):
         lin = ee.Image(10).pow(img.select(["VV", "VH"]).divide(10)).rename(["VV_lin", "VH_lin"])
         fc = lin.reduceRegions(grid, ee.Reducer.mean(), scale=20, tileScale=4)
         fc = fc.filter(ee.Filter.notNull(["VV_lin"]))
-        return fc.map(lambda f: ee.Feature(None, f.toDictionary(
-            ["cell_id", "VV_lin", "VH_lin"])).set({
+        return fc.map(lambda f: _point_row(f, ["cell_id", "VV_lin", "VH_lin"]).set({
                 "date": img.date().format("YYYY-MM-dd'T'HH:mm"),
                 "pass": img.get("orbitProperties_pass"),
                 "rel_orbit": img.get("relativeOrbitNumber_start"),
@@ -149,7 +163,8 @@ def era5_table(grid, start: str, end: str):
 
     def per_day(img):
         fc = img.reduceRegions(pts, ee.Reducer.first(), scale=11132)
-        return fc.map(lambda f: ee.Feature(None, f.toDictionary()).set(
+        # pts already carry the centroid geometry; keep it (toAsset rejects null geometry).
+        return fc.map(lambda f: ee.Feature(f.geometry(), f.toDictionary()).set(
             "date", img.date().format("YYYY-MM-dd")))
 
     return col.map(per_day).flatten()
